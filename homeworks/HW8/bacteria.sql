@@ -1,4 +1,4 @@
-#CREATE DATABASE bacteria;
+CREATE DATABASE bacteria;
 
 CREATE TABLE divisio (
                          id INT PRIMARY KEY AUTO_INCREMENT,
