@@ -16,17 +16,11 @@ class Taxi implements ITaxi {
 
     public function getCar($type): Car
     {
-        switch ($type){
-            case 'econom':
-                return new CarEconom();
-                break;
-            case 'standart':
-                return new CarStandart();
-                break;
-            case 'lux':
-                return new CarLux();
-                break;
-        }
+        return match ($type){
+            'econom' => new CarEconom(),
+            'standart' => new CarStandart(),
+            'lux' => new CarLux()
+        };
     }
 
     public function car ($type){
