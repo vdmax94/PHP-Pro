@@ -1,39 +1,44 @@
 <?php
-interface Car{
-    public function getModelCar();
-    public function getPrice();
-}
-
+//Створюємо абстрактний класс креатора, що буде створювати об'єкт машини (типу економ, стандарт та люкс) за допомогою фабричного методу getCar().
 abstract class Taxi{
-    abstract public function getTaxi(): Car;
+    abstract public function getCar(): Car;
 
     public function car (){
-        $car = $this->getTaxi();
+        $car = $this->getCar();
 
         return ['modelCar'=>$car->getModelCar(),
                 'priceCar'=>$car->getPrice()];
     }
 }
 
+// Креатор економ машини
 class TaxiEconom extends Taxi{
-    public function getTaxi(): Car
+    public function getCar(): Car
     {
         return new CarEconom();
     }
 }
 
+// Креатор стандарт машини
 class TaxiStandart extends Taxi{
-    public function getTaxi(): Car
+    public function getCar(): Car
     {
         return new CarStandart();
     }
 }
 
+// Креатор люкс машини
 class TaxiLux extends Taxi{
-    public function getTaxi(): Car
+    public function getCar(): Car
     {
         return new CarLux();
     }
+}
+
+//Інтерфейс за яким будуть створюватись машини різних типів (економ, стандарт та люкс)
+interface Car{
+    public function getModelCar();
+    public function getPrice();
 }
 
 class CarEconom implements Car{
@@ -75,6 +80,7 @@ class CarLux implements Car{
     }
 }
 
+//Універсальний клієнтський код, що "запускає" створення об'єктів
 function clientCode(Taxi $taxi){
     echo $taxi->car()['modelCar'].'<br>';
     echo "Trip price: ".$taxi->car()['priceCar'].'<br><br>';
