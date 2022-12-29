@@ -1,0 +1,16 @@
+{
+    "name": "root/html",
+    "autoload": {
+        "psr-4": {
+            "HW13\\": "homeworks/HW13/Classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "vdmax"
+        }
+    ],
+    "require": {
+        "larapack/dd": "^1.1"
+    }
+}
